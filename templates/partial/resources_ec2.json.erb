@@ -1,0 +1,29 @@
+"SecurityGroup" : {
+  "Type" : "AWS::EC2::SecurityGroup",
+  "Properties" : {
+    "GroupDescription" : "Security Group",
+    "SecurityGroupIngress" : [
+      {
+        "CidrIp" : "0.0.0.0/0",
+        "FromPort" : "22",
+        "ToPort" : "22",
+        "IpProtocol" : "tcp"
+      }, {
+        "CidrIp" : "0.0.0.0/0",
+        "FromPort" : "9987",
+        "ToPort" : "9987",
+        "IpProtocol" : "udp"
+      }, {
+        "CidrIp" : "0.0.0.0/0",
+        "FromPort" : "30033",
+        "ToPort" : "30033",
+        "IpProtocol" : "tcp"
+      }, {
+        "CidrIp" : "0.0.0.0/0",
+        "FromPort" : "10011",
+        "ToPort" : "10011",
+        "IpProtocol" : "tcp"
+      }
+    ]
+  }
+}

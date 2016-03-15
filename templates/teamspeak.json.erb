@@ -1,0 +1,15 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "Teamspeak Cluster",
+
+  "Parameters" : {
+    <%= partial('parameters.json.erb') %>
+  },
+  "Resources" : {
+    <%= partial('resources_autoscaling.json.erb') %>,
+    <%= partial('resources_ec2.json.erb') %>
+  },
+  "Outputs" : {
+    <%= partial('outputs.json.erb') %>
+  }
+}

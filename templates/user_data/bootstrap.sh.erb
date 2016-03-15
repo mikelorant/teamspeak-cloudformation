@@ -1,0 +1,19 @@
+#!/bin/bash -ex
+
+exec > >(tee /var/log/user-data.log | logger -t user-data -s 2>/dev/console) 2>&1
+
+STACKNAME="<%= ref("AWS::StackName") %>"
+REGION="<%= ref("AWS::Region") %>"
+
+# Required since an older release may reference deleted packages.
+apt-get -y update
+
+which pip || apt-get install python-pip -y
+pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
+
+cfn-init \
+  --verbose \
+  --stack ${STACKNAME} \
+  --resource LaunchConfiguration \
+  --region ${REGION} \
+  --configsets required
